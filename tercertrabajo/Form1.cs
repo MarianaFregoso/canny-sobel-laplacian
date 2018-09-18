@@ -70,13 +70,11 @@ namespace tercertrabajo
                 return;
             }
 
-
             Image<Gray, byte> _ImgGray = _ImgInput.Convert<Gray, byte>();
-            Image<Gray, byte> _ImgGray = new Image<Gray, byte>
+            Image<Gray, float> _ImgLaplace = new Image<Gray, float>
                 (_ImgInput.Width, _ImgInput.Height, new Gray(0));
-            _ImgGray = _ImgGray.Laplace(3, 3, 5);
-            imageBox1.Image = _ImgGray;
-
+            _ImgLaplace = _ImgLaplace.Laplace(5);
+            imageBox1.Image = _ImgLaplace;
         }
     }
 }
