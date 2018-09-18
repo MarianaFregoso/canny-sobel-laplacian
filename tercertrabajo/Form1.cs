@@ -46,5 +46,37 @@ namespace tercertrabajo
             _ImgCanny = _ImgInput.Canny(100, 50);
             imageBox1.Image = _ImgCanny;
         }
+
+        private void sobelToolStripMenuItem_Click(object sender, EventArgs e)
+        { 
+            if (_ImgInput == null)
+            {
+                return;
+            }
+
+            Image<Gray, byte> _ImgGray = _ImgInput.Convert<Gray, byte>();
+            Image<Gray, float> _ImgSobel = new Image<Gray, float>
+                (_ImgInput.Width, _ImgInput.Height, new Gray(0));
+            _ImgSobel = _ImgGray.Sobel(3,3,5);
+            imageBox1.Image = _ImgSobel;
+
+
+        }
+
+        private void laplacianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_ImgInput == null)
+            {
+                return;
+            }
+
+
+            Image<Gray, byte> _ImgGray = _ImgInput.Convert<Gray, byte>();
+            Image<Gray, byte> _ImgGray = new Image<Gray, byte>
+                (_ImgInput.Width, _ImgInput.Height, new Gray(0));
+            _ImgGray = _ImgGray.Laplace(3, 3, 5);
+            imageBox1.Image = _ImgGray;
+
+        }
     }
 }
